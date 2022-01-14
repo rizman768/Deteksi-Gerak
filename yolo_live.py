@@ -9,11 +9,11 @@ classes = []
 with open("coco.names", "r") as f:
     classes = [line.strip() for line in f.readlines()]
 layer_names = net.getLayerNames()
-output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers()]
 colors = np.random.uniform(0, 255, size=(len(classes), 3)) #Generate Random Color
 
 # Load Video
-cap = cv2.VideoCapture("vid2.mp4") #0 -> Webcam; "/path"
+cap = cv2.VideoCapture(0) #0 -> Webcam; "/path"
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 timeframe = time.time()
